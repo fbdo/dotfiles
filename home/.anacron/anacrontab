@@ -1,0 +1,13 @@
+# /etc/anacrontab: configuration file for anacron
+
+# See anacron(8) and anacrontab(5) for details.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+HOME=/home/fabio
+LOGNAME=fabio
+
+# These replace cron's entries
+1	5		fabio.anacron.daily	run-parts --report $HOME/.anacron/anacron.daily
+7	10		fabio.anacron.weekly	run-parts --report $HOME/.anacron/anacron.weekly
+@monthly	15	fabio.anacron.monthly	run-parts --report $HOME/.anacron/anacron.monthly
