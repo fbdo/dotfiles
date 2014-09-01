@@ -1,0 +1,3 @@
+#!/bin/bash
+
+find /home/fabio/Downloads/* -mtime +60 -exec rm -Rf -- {} \; > /tmp/purge.log 2>&1

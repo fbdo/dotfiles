@@ -1,0 +1,7 @@
+#!/bin/bash
+
+CONFIG=/home/fabio/bin/backup_s3.conf
+
+. $CONFIG
+
+/usr/bin/duplicity /home/fabio/ --include=/home/fabio/.cache/deja-dup/metadata --exclude=/home/fabio/Downloads --exclude=/home/fabio/.local/share/Trash --exclude=/home/fabio/.xsession-errors --exclude=/home/fabio/.thumbnails --exclude=/home/fabio/.steam/root --exclude=/home/fabio/.adobe/Flash_Player/AssetCache --exclude=/home/fabio/.cache/deja-dup --exclude=/home/fabio/.cache --exclude=/home/fabio/.local/share/Steam --exclude=/home/fabio/Applications --exclude=/home/fabio/.m2 --exclude=/home/fabio/VirtualBox\ VMs --s3-use-new-style s3+http://fbdobackup/HAL --no-encryption --verbosity=9 --gpg-options=--no-use-agent --archive-dir=/home/fabio/.cache/deja-dup --tempdir=/tmp > /tmp/backup_s3.log 2>&1
