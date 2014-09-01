@@ -116,3 +116,4 @@ fi
 /usr/sbin/anacron -t /home/fabio/.anacron/anacrontab
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+homeshick --quiet refresh 2
