@@ -117,3 +117,6 @@ fi
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 homeshick --quiet refresh 2
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
