@@ -24,6 +24,6 @@ fi
 JAVA_HOME=/usr/lib/jvm/java-7-oracle
 M2_HOME="/opt/maven"
 M2="$M2_HOME/bin"
-APPENGINE_HOME="/home/fabio/Applications/appengine-java-sdk-1.9.5"
-GRADLE_HOME="/home/fabio/Applications/gradle-2.1" 
+APPENGINE_HOME="/home/fabio/Applications/appengine-java-sdk"
+GRADLE_HOME="/home/fabio/Applications/gradle" 
 PATH="$HOME/Applications/activator-1.2.2:/opt/scala/bin:$M2:$APPENGINE_HOME/bin:$GRADLE_HOME/bin:$PATH"
