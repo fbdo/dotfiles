@@ -1,3 +1,4 @@
 #!/bin/bash
 
 find /home/fabio/Downloads -ctime +60 -exec rm -rf {} + > /tmp/purge.log 2>&1
+find /home/fabio/.m2/repository -ctime +60 -exec rm -rf {} + > /tmp/purge.log 2>&1
