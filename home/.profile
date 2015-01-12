@@ -26,5 +26,5 @@ M2_HOME="/opt/maven"
 M2="$M2_HOME/bin"
 APPENGINE_HOME="/home/fabio/Applications/appengine-java-sdk"
 GRADLE_HOME="/home/fabio/Applications/gradle" 
-PATH="$HOME/Applications/activator-1.2.2:/opt/scala/bin:$M2:$APPENGINE_HOME/bin:$GRADLE_HOME/bin:$PATH"
+PATH="$HOME/Applications/activator:/opt/scala/bin:$M2:$APPENGINE_HOME/bin:$GRADLE_HOME/bin:$PATH"
 ANSIBLE_HOSTS=/home/fabio/Applications/ansible/ansible_hosts
