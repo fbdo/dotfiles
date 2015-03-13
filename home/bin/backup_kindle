@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rsync -var --delete /media/fabio/Kindle/ ~/Documents/Kindle/ > /tmp/backup_kindle.log 2>&1
+rsync -varh --delete /media/fabio/Kindle/ ~/Documents/Kindle/ > /tmp/backup_kindle.log 2>&1
