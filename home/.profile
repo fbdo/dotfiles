@@ -28,3 +28,6 @@ APPENGINE_HOME="/home/fabio/Applications/appengine-java-sdk"
 GRADLE_HOME="/home/fabio/Applications/gradle" 
 PATH="$HOME/Applications/activator:/opt/scala/bin:$M2:$APPENGINE_HOME/bin:$GRADLE_HOME/bin:$PATH"
 ANSIBLE_HOSTS=/home/fabio/Applications/ansible/ansible_hosts
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/home/fabio/.gvm/bin/gvm-init.sh" ]] && source "/home/fabio/.gvm/bin/gvm-init.sh"

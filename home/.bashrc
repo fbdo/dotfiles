@@ -120,3 +120,6 @@ homeshick --quiet refresh 2
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/home/fabio/.gvm/bin/gvm-init.sh" ]] && source "/home/fabio/.gvm/bin/gvm-init.sh"
