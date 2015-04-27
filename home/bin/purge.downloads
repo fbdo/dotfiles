@@ -1,4 +1,5 @@
 #!/bin/bash
 
-find /home/fabio/Downloads/* -ctime +60 -exec rm -vrf {} + > /tmp/purge.log 2>&1
-find /home/fabio/.m2/repository/* -ctime +60 -exec rm -vrf {} + > /tmp/purge.log 2>&1
+find $HOME/Downloads/* -ctime +60 -exec rm -vrf {} + > /tmp/purge.log 2>&1
+find $HOME/.m2/repository/* -ctime +30 -exec rm -vrf {} + >> /tmp/purge.log 2>&1
+cat /tmp/purge.log | mail -s "Purged Files at $(date)" $USER
