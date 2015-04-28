@@ -17,7 +17,9 @@ CONFIG=$HOME/bin/backup_s3.conf
  --exclude=$HOME/.local/share/Steam \
  --exclude=$HOME/Applications \
  --exclude=$HOME/.m2 \
- --exclude=$HOME/.Ideal* \
+ --exclude=$HOME/.AndroidStudio \
+ --exclude=$HOME/.IdeaIC13 \
+ --exclude=$HOME/.IdeaIC14 \
  --exclude=$HOME/.vagrant.d \
  --exclude=$HOME/.ivy2 \
  --exclude=$HOME/.gradle \
@@ -32,4 +34,19 @@ CONFIG=$HOME/bin/backup_s3.conf
  --asynchronous-upload \
  --tempdir=/tmp > /tmp/backup_s3.log 2>&1
 
-echo "Results of your periodic backup execution" | mail -a /tmp/backup_s3.log -s "Purged Files $(date)" $USER
+/usr/bin/duplicity remove-older-than 3M --force \
+ --s3-use-new-style s3+http://fbdobackup/HAL \
+ --verbosity=9 \
+ --archive-dir=$HOME/.cache/deja-dup \
+ --tempdir=/tmp >> /tmp/backup_s3.log 2>&1
+
+/usr/bin/duplicity cleanup --force \
+ --s3-use-new-style s3+http://fbdobackup/HAL \
+ --no-encryption \
+ --gpg-options=--no-use-agent \
+ --verbosity=9 \
+ --archive-dir=$HOME/.cache/deja-dup \
+ --tempdir=/tmp >> /tmp/backup_s3.log 2>&1
+
+
+echo "Results of your periodic backup execution" | mail -a /tmp/backup_s3.log -s "Backup Files $(date)" $USER
