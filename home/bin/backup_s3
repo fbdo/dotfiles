@@ -48,6 +48,6 @@ CONFIG=$HOME/bin/backup_s3.conf
  --archive-dir=$HOME/.cache/deja-dup \
  --tempdir=/tmp >> /tmp/backup_s3.log 2>&1
 
-gzip /tmp/backup_s3.log
+gzip -f /tmp/backup_s3.log
 
 echo "Results of your periodic backup execution" | mail -a /tmp/backup_s3.log.gz -s "Backup Report $(date)" $USER
