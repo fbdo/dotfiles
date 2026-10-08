@@ -1,0 +1,15 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+# Brewfile hash: {{ include "Brewfile" | sha256sum }}
+set -e
+if ! command -v brew >/dev/null 2>&1; then
+  for b in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+    [ -x "$b" ] && eval "$("$b" shellenv)" && break
+  done
+fi
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Homebrew not installed, skipping brew bundle (https://brew.sh)" >&2
+  exit 0
+fi
+brew bundle --file={{ joinPath .chezmoi.sourceDir "Brewfile" | quote }}
+{{ end -}}

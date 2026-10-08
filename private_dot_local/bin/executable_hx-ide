@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+SESSION_NAME="dev"
+TARGET_DIR="$(realpath "${1:-.}")"
+
+# If the session already exists, attach to it
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+    tmux attach-session -t "$SESSION_NAME"
+    exit 0
+fi
+
+# 1. Start a new detached session in the target directory
+tmux new-session -d -s "$SESSION_NAME" -c "$TARGET_DIR"
+
+# 2. Split left: insert a 28-column pane on the left (-b) running nnn
+tmux split-window -h -b -l 28 -c "$TARGET_DIR" "nnn -e"
+
+# 3. Launch Helix in the main right pane
+tmux send-keys -t "$SESSION_NAME:0.1" "hx ." C-m
+
+# 4. Focus the Helix pane by default
+tmux select-pane -t "$SESSION_NAME:0.1"
+
+# 5. Attach to the session
+tmux attach-session -t "$SESSION_NAME"

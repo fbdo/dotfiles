@@ -1,0 +1,8 @@
+# Lives at ~/.config/git/config so a ~/.gitconfig written by Codespaces
+# (or anything else) layers on top instead of conflicting.
+[user]
+	name = Fabio Oliveira
+	email = fabio.braga@gmail.com
+# Per-machine settings (work identity, signing, credential helpers); not tracked
+[include]
+	path = ~/.config/git/config.local

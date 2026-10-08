@@ -1,0 +1,12 @@
+README.md
+install.sh
+Brewfile
+
+{{ if or (ne .chezmoi.os "linux") (env "CODESPACES") }}
+# ChromeOS/systemd user environment only
+.config/environment.d
+{{ end }}
+
+{{ if and (ne .chezmoi.os "darwin") (not (env "CODESPACES")) (not (lookPath "zsh")) }}
+.zshrc
+{{ end }}

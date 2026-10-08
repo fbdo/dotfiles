@@ -1,0 +1,5 @@
+[editor.soft-wrap]
+enable = true
+
+[keys.normal.space]
+M = ":lsp-workspace-command open-preview"

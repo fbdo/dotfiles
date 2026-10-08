@@ -1,0 +1,10 @@
+#!/bin/sh
+# Keep the existing file (distro or Codespaces image defaults) and append
+# one line that loads the shared shell setup.
+marker='# chezmoi: shared shell setup'
+input=$(cat)
+[ -n "$input" ] && printf '%s\n' "$input"
+case "$input" in
+  *"$marker"*) ;;
+  *) printf '\n%s\n[ -r "$HOME/.config/shell/init.sh" ] && . "$HOME/.config/shell/init.sh"\n' "$marker" ;;
+esac
