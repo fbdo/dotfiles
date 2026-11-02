@@ -1,4 +1,16 @@
+{{- $herdr := stat (joinPath .chezmoi.homeDir ".claude/hooks/herdr-agent-state.sh") -}}
+{{- $lavish := lookPath "lavish-axi" -}}
 {
-  "theme": "dark"{{ if stat (joinPath .chezmoi.homeDir ".claude/hooks/herdr-agent-state.sh") }},
-  "hooks": {"SessionStart":[{"matcher":"^(startup|resume|clear|compact|fork)$","hooks":[{"type":"command","command":"bash '{{ .chezmoi.homeDir }}/.claude/hooks/herdr-agent-state.sh' session","timeout":10}]}]}{{ end }}
+  "theme": "dark",
+  "enabledPlugins": {"typescript-lsp@claude-plugins-official": true},
+  "modelSettings": {"claude-opus-5-5": {"effortLevel": "high"}},
+  "skipDangerousModePermissionPrompt": true{{ if or $herdr $lavish }},
+  "hooks": {"SessionStart":[
+{{- if $herdr }}
+    {"matcher":"^(startup|resume|clear|compact|fork)$","hooks":[{"type":"command","command":"bash '{{ .chezmoi.homeDir }}/.claude/hooks/herdr-agent-state.sh' session","timeout":10}]}{{ if $lavish }},{{ end }}
+{{- end }}
+{{- if $lavish }}
+    {"matcher":"","hooks":[{"type":"command","command":"lavish-axi","timeout":10}]}
+{{- end }}
+  ]}{{ end }}
 }
