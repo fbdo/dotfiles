@@ -3,3 +3,6 @@ enable = true
 
 [keys.normal.space]
 M = ":lsp-workspace-command open-preview"
+
+[keys.normal]
+C-r = ":reload-all"

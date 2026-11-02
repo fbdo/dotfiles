@@ -6,3 +6,6 @@
 # Per-machine settings (work identity, signing, credential helpers); not tracked
 [include]
 	path = ~/.config/git/config.local
+
+[init]
+	defaultBranch = main
